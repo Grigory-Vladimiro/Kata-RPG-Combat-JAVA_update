@@ -58,4 +58,8 @@ public class Character {
             return attackRange;
         }
     }
+    private final CharacterType type;
+    public Character(CharacterType type) {
+    this.type = type;
+    }
 }
