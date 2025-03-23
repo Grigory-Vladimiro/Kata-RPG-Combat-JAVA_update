@@ -31,4 +31,14 @@ class CharacterTest {
         character.heal(100);
         assertEquals(0, character.getHealth()); 
     }
+    @Test
+    void healingShouldNotExceedMaxHealth() {
+        Character character = new Character();
+        character.heal(100);
+        assertEquals(1000, character.getHealth());
+
+        character.receiveDamage(200);
+        character.heal(300);
+        assertEquals(1000, character.getHealth());
+    }
 }
