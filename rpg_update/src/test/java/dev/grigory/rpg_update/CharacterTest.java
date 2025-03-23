@@ -11,4 +11,10 @@ class CharacterTest {
         assertEquals(1, character.getLevel());
         assertTrue(character.isAlive());
     }
+    @Test
+    void characterShouldTakeDamage() {
+        Character character = new Character();
+        character.receiveDamage(200);
+        assertEquals(800, character.getHealth());
+    }
 }
