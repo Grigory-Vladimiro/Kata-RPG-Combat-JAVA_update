@@ -18,5 +18,9 @@ public class Character {
     }
     public void receiveDamage(int damage) {
         health -= damage;
+        if (health <= 0) {
+            health = 0;
+            alive = false;
+        }
     }
 }
