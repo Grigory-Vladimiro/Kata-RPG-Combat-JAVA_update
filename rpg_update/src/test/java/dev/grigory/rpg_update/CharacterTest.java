@@ -44,7 +44,7 @@ class CharacterTest {
     @Test
     void characterCanOnlyHealItself() {
         Character healer = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
-        Character target = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
+        Character target = new Character(Character.CharacterType.MELEE, Faction.ORCS);
 
         target.receiveDamage(500);
         healer.heal(target, 200);
