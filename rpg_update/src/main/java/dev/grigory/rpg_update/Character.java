@@ -23,4 +23,8 @@ public class Character {
             alive = false;
         }
     }
+    public void heal(int amount) {
+        if (!alive) return;
+        health = Math.min(health + amount, 1000);
+    }
 }
