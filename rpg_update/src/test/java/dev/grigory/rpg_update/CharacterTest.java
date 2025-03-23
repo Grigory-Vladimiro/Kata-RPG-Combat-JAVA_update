@@ -102,4 +102,12 @@ class CharacterTest {
         attacker.dealDamage(target, 100, 2);
         assertEquals(900, target.getHealth());
     }
+    @Test
+    void alliesCannotDealDamageToEachOther() {
+        Character human = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
+        Character elf = new Character(Character.CharacterType.MELEE, Faction.ELVES);
+
+        human.dealDamage(elf, 100, 2);
+        assertEquals(1000, elf.getHealth());
+    }
 }
