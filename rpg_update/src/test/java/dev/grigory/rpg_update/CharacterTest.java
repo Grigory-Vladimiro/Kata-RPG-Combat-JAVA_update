@@ -50,4 +50,16 @@ class CharacterTest {
         healer.heal(target, 200);
         assertEquals(500, target.getHealth());
     }
+    @Test
+    void damageIsReducedBy50PercentWhenTargetIsFiveOrMoreLevelsAbove() {
+        Character attacker = new Character();
+        Character target = new Character();
+
+        for (int i = 0; i < 5; i++) {
+        target.levelUp();
+        }
+
+        attacker.dealDamage(target, 100);
+        assertEquals(950, target.getHealth());
+    }
 }
