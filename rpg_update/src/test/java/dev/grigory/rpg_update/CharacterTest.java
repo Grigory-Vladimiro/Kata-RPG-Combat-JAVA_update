@@ -24,4 +24,11 @@ class CharacterTest {
         assertEquals(0, character.getHealth());
         assertFalse(character.isAlive());
     }
+    @Test
+    void deadCharacterCannotBeHealed() {
+        Character character = new Character();
+        character.receiveDamage(1000); 
+        character.heal(100);
+        assertEquals(0, character.getHealth()); 
+    }
 }
