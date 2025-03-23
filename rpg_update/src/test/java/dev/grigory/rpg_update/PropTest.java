@@ -18,4 +18,11 @@ class PropTest {
         assertEquals(0, rock.getHealth());
         assertTrue(rock.isDestroyed());
     }
+    @Test
+    void propsCannotBeHealed() {
+        Prop statue = new Prop(1500);
+        statue.receiveDamage(500);
+        statue.heal(300);
+        assertEquals(1000, statue.getHealth());
+    }
 }
