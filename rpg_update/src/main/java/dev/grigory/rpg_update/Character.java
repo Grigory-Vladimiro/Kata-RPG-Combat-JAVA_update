@@ -44,4 +44,18 @@ public class Character {
         }
         target.receiveDamage(adjustedDamage);
     }
+    public enum CharacterType {
+        MELEE(2),
+        RANGED(20);
+    
+        private final int attackRange;
+    
+        CharacterType(int attackRange) {
+            this.attackRange = attackRange;
+        }
+    
+        public int getAttackRange() {
+            return attackRange;
+        }
+    }
 }
