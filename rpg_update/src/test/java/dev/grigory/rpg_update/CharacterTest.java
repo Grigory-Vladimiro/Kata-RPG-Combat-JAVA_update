@@ -85,4 +85,10 @@ class CharacterTest {
         assertTrue(melee.isInRange(2));
         assertFalse(melee.isInRange(3));
     }
+    @Test
+    void rangedFighterCanAttackWithinTwentyMeters() {
+        Character ranged = new Character(Character.CharacterType.RANGED);
+        assertTrue(ranged.isInRange(20));
+        assertFalse(ranged.isInRange(21));
+    }
 }
