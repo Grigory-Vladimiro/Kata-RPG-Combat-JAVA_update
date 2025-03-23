@@ -27,4 +27,8 @@ public class Character {
         if (!alive) return;
         health = Math.min(health + amount, 1000);
     }
+    public void heal(Character target, int amount) {
+        if (this != target) return;
+        target.heal(amount);
+    }
 }
