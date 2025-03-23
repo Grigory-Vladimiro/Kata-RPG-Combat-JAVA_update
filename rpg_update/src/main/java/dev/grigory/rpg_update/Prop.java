@@ -17,4 +17,6 @@ public class Prop {
     public boolean isDestroyed() {
         return health == 0;
     }
+    public void heal(int amount) {
+    }
 }
