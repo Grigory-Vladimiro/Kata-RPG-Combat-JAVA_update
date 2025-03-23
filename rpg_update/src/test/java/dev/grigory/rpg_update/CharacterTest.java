@@ -6,34 +6,34 @@ import static org.junit.jupiter.api.Assertions.*;
 class CharacterTest {
     @Test
     void newCharacterHasDefaultHealthLevelAndIsAlive() {
-        Character character = new Character(Character.CharacterType.MELEE);;
+        Character character = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
         assertEquals(1000, character.getHealth());
         assertEquals(1, character.getLevel());
         assertTrue(character.isAlive());
     }
     @Test
     void characterShouldTakeDamage() {
-        Character character = new Character(Character.CharacterType.MELEE);;
+        Character character = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
         character.receiveDamage(200);
         assertEquals(800, character.getHealth());
     }
     @Test
     void characterShouldDieIfHealthReachesZero() {
-        Character character = new Character(Character.CharacterType.MELEE);;
+        Character character = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
         character.receiveDamage(1000);
         assertEquals(0, character.getHealth());
         assertFalse(character.isAlive());
     }
     @Test
     void deadCharacterCannotBeHealed() {
-        Character character = new Character(Character.CharacterType.MELEE);;
+        Character character = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
         character.receiveDamage(1000); 
         character.heal(100);
         assertEquals(0, character.getHealth()); 
     }
     @Test
     void healingShouldNotExceedMaxHealth() {
-        Character character = new Character(Character.CharacterType.MELEE);;
+        Character character = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
         character.heal(100);
         assertEquals(1000, character.getHealth());
 
@@ -43,8 +43,8 @@ class CharacterTest {
     }
     @Test
     void characterCanOnlyHealItself() {
-        Character healer = new Character(Character.CharacterType.MELEE);;
-        Character target = new Character(Character.CharacterType.MELEE);;
+        Character healer = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
+        Character target = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
 
         target.receiveDamage(500);
         healer.heal(target, 200);
@@ -52,8 +52,8 @@ class CharacterTest {
     }
     @Test
     void damageIsReducedBy50PercentWhenTargetIsFiveOrMoreLevelsAbove() {
-        Character attacker = new Character(Character.CharacterType.MELEE);;
-        Character target = new Character(Character.CharacterType.MELEE);;
+        Character attacker = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
+        Character target = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
 
         for (int i = 0; i < 5; i++) {
         target.levelUp();
@@ -64,8 +64,8 @@ class CharacterTest {
     }
     @Test
     void damageIsIncreasedBy50PercentWhenTargetIsFiveOrMoreLevelsBelow() {
-        Character attacker = new Character(Character.CharacterType.MELEE);;
-        Character target = new Character(Character.CharacterType.MELEE);;
+        Character attacker = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
+        Character target = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
         for (int i = 0; i < 5; i++) {
         attacker.levelUp();
         }
@@ -75,26 +75,26 @@ class CharacterTest {
     }
     @Test
     void characterCannotDealDamageToItself() {
-        Character character = new Character(Character.CharacterType.MELEE);;
+        Character character = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
         character.dealDamage(character, 100);
         assertEquals(1000, character.getHealth());
     }
     @Test
     void meleeFighterCanOnlyAttackWithinTwoMeters() {
-        Character melee = new Character(Character.CharacterType.MELEE);
+        Character melee = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
         assertTrue(melee.isInRange(2));
         assertFalse(melee.isInRange(3));
     }
     @Test
     void rangedFighterCanAttackWithinTwentyMeters() {
-        Character ranged = new Character(Character.CharacterType.RANGED);
+        Character ranged = new Character(Character.CharacterType.RANGED, Faction.HUMANS);
         assertTrue(ranged.isInRange(20));
         assertFalse(ranged.isInRange(21));
     }
     @Test
     void charactersCanOnlyDealDamageIfTargetIsInRange() {
-        Character attacker = new Character(Character.CharacterType.MELEE);
-        Character target = new Character(Character.CharacterType.MELEE);
+        Character attacker = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
+        Character target = new Character(Character.CharacterType.MELEE, Faction.ORCS);
 
         attacker.dealDamage(target, 100, 3);
         assertEquals(1000, target.getHealth());
