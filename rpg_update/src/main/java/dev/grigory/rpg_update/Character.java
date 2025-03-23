@@ -62,4 +62,7 @@ public class Character {
     public Character(CharacterType type) {
     this.type = type;
     }
+    public boolean isInRange(int distance) {
+        return distance <= type.getAttackRange();
+    }
 }
