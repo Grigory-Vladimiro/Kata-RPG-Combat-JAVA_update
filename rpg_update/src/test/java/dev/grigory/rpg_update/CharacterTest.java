@@ -17,4 +17,11 @@ class CharacterTest {
         character.receiveDamage(200);
         assertEquals(800, character.getHealth());
     }
+    @Test
+    void characterShouldDieIfHealthReachesZero() {
+        Character character = new Character();
+        character.receiveDamage(1000);
+        assertEquals(0, character.getHealth());
+        assertFalse(character.isAlive());
+    }
 }
