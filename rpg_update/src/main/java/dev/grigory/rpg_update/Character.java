@@ -31,4 +31,17 @@ public class Character {
         if (this != target) return;
         target.heal(amount);
     }
+    public void levelUp() {
+        level++;
+    }
+    public void dealDamage(Character target, int damage) {
+        if (target == this) return;    
+        int adjustedDamage = damage;
+        if (target.level >= this.level + 5) {
+            adjustedDamage = damage / 2;
+        } else if (this.level >= target.level + 5) {
+            adjustedDamage = (int) (damage * 1.5);
+        }
+        target.receiveDamage(adjustedDamage);
+    }
 }
