@@ -16,4 +16,7 @@ public class Character {
     public boolean isAlive() {
         return alive;
     }
+    public void receiveDamage(int damage) {
+        health -= damage;
+    }
 }
