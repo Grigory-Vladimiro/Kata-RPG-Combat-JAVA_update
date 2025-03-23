@@ -91,4 +91,15 @@ class CharacterTest {
         assertTrue(ranged.isInRange(20));
         assertFalse(ranged.isInRange(21));
     }
+    @Test
+    void charactersCanOnlyDealDamageIfTargetIsInRange() {
+        Character attacker = new Character(Character.CharacterType.MELEE);
+        Character target = new Character(Character.CharacterType.MELEE);
+
+        attacker.dealDamage(target, 100, 3);
+        assertEquals(1000, target.getHealth());
+
+        attacker.dealDamage(target, 100, 2);
+        assertEquals(900, target.getHealth());
+    }
 }
