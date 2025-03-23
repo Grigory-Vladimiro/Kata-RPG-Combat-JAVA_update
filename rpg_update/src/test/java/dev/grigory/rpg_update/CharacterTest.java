@@ -41,4 +41,13 @@ class CharacterTest {
         character.heal(300);
         assertEquals(1000, character.getHealth());
     }
+    @Test
+    void characterCanOnlyHealItself() {
+        Character healer = new Character();
+        Character target = new Character();
+
+        target.receiveDamage(500);
+        healer.heal(target, 200);
+        assertEquals(500, target.getHealth());
+    }
 }
