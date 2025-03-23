@@ -79,4 +79,10 @@ class CharacterTest {
         character.dealDamage(character, 100);
         assertEquals(1000, character.getHealth());
     }
+    @Test
+    void meleeFighterCanOnlyAttackWithinTwoMeters() {
+        Character melee = new Character(Character.CharacterType.MELEE);
+        assertTrue(melee.isInRange(2));
+        assertFalse(melee.isInRange(3));
+    }
 }
