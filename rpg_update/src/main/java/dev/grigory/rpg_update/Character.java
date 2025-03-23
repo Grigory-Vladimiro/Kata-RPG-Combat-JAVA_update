@@ -4,6 +4,15 @@ public class Character {
     private int health = 1000;
     private int level = 1;
     private boolean alive = true;
+    private final Faction faction;
+
+    public Character(CharacterType type, Faction faction) {
+        this.type = type;
+        this.faction = faction; 
+    }
+    public boolean isAlly(Character other) {
+        return this.faction.isAlly(other.faction);
+    }
 
     public int getHealth() {
         return health;
@@ -59,15 +68,13 @@ public class Character {
         }
     }
     private final CharacterType type;
-    public Character(CharacterType type) {
-    this.type = type;
-    }
     public boolean isInRange(int distance) {
         return distance <= type.getAttackRange();
     }
     public void dealDamage(Character target, int damage, int distance) {
         if (target == this) return;
         if (!isInRange(distance)) return;
+        if (isAlly(target)) return;
         int adjustedDamage = damage;
         if (target.level >= this.level + 5) {
             adjustedDamage = damage / 2;
