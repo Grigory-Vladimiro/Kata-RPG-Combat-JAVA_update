@@ -37,8 +37,9 @@ public class Character {
         health = Math.min(health + amount, 1000);
     }
     public void heal(Character target, int amount) {
-        if (this != target) return;
+        if (this == target || isAlly(target)) {
         target.heal(amount);
+        }
     }
     public void levelUp() {
         level++;

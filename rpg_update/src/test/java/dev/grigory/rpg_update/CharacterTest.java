@@ -110,4 +110,13 @@ class CharacterTest {
         human.dealDamage(elf, 100, 2);
         assertEquals(1000, elf.getHealth());
     }
+    @Test
+    void alliesCanHealEachOther() {
+        Character elf = new Character(Character.CharacterType.RANGED, Faction.ELVES);
+        Character human = new Character(Character.CharacterType.MELEE, Faction.HUMANS);
+
+        human.receiveDamage(500);
+        elf.heal(human, 200);
+        assertEquals(700, human.getHealth());
+    }
 }
