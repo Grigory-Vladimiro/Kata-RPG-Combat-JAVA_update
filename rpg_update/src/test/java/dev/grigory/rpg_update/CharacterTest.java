@@ -6,34 +6,34 @@ import static org.junit.jupiter.api.Assertions.*;
 class CharacterTest {
     @Test
     void newCharacterHasDefaultHealthLevelAndIsAlive() {
-        Character character = new Character();
+        Character character = new Character(Character.CharacterType.MELEE);;
         assertEquals(1000, character.getHealth());
         assertEquals(1, character.getLevel());
         assertTrue(character.isAlive());
     }
     @Test
     void characterShouldTakeDamage() {
-        Character character = new Character();
+        Character character = new Character(Character.CharacterType.MELEE);;
         character.receiveDamage(200);
         assertEquals(800, character.getHealth());
     }
     @Test
     void characterShouldDieIfHealthReachesZero() {
-        Character character = new Character();
+        Character character = new Character(Character.CharacterType.MELEE);;
         character.receiveDamage(1000);
         assertEquals(0, character.getHealth());
         assertFalse(character.isAlive());
     }
     @Test
     void deadCharacterCannotBeHealed() {
-        Character character = new Character();
+        Character character = new Character(Character.CharacterType.MELEE);;
         character.receiveDamage(1000); 
         character.heal(100);
         assertEquals(0, character.getHealth()); 
     }
     @Test
     void healingShouldNotExceedMaxHealth() {
-        Character character = new Character();
+        Character character = new Character(Character.CharacterType.MELEE);;
         character.heal(100);
         assertEquals(1000, character.getHealth());
 
@@ -43,8 +43,8 @@ class CharacterTest {
     }
     @Test
     void characterCanOnlyHealItself() {
-        Character healer = new Character();
-        Character target = new Character();
+        Character healer = new Character(Character.CharacterType.MELEE);;
+        Character target = new Character(Character.CharacterType.MELEE);;
 
         target.receiveDamage(500);
         healer.heal(target, 200);
@@ -52,8 +52,8 @@ class CharacterTest {
     }
     @Test
     void damageIsReducedBy50PercentWhenTargetIsFiveOrMoreLevelsAbove() {
-        Character attacker = new Character();
-        Character target = new Character();
+        Character attacker = new Character(Character.CharacterType.MELEE);;
+        Character target = new Character(Character.CharacterType.MELEE);;
 
         for (int i = 0; i < 5; i++) {
         target.levelUp();
@@ -64,8 +64,8 @@ class CharacterTest {
     }
     @Test
     void damageIsIncreasedBy50PercentWhenTargetIsFiveOrMoreLevelsBelow() {
-        Character attacker = new Character();
-        Character target = new Character();
+        Character attacker = new Character(Character.CharacterType.MELEE);;
+        Character target = new Character(Character.CharacterType.MELEE);;
         for (int i = 0; i < 5; i++) {
         attacker.levelUp();
         }
@@ -75,7 +75,7 @@ class CharacterTest {
     }
     @Test
     void characterCannotDealDamageToItself() {
-        Character character = new Character();
+        Character character = new Character(Character.CharacterType.MELEE);;
         character.dealDamage(character, 100);
         assertEquals(1000, character.getHealth());
     }
