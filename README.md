@@ -61,15 +61,15 @@ Tests are located in:
 
 ## 📁 Project Structure  
 
-src/
-├── main/
-│   └── java/
-│       └── com/factoriaf5/kata/
-│           ├── Character.java
-│           ├── Faction.java
-│           └── Prop.java
-└── test/
-    └── java/
-        └── com/factoriaf5/kata/
-            ├── CharacterTest.java
-            └── PropTest.java
+src/  
+├── main/  
+│   └── java/  
+│       └── com/factoriaf5/kata/  
+│           ├── Character.java  
+│           ├── Faction.java  
+│           └── Prop.java  
+└── test/  
+    └── java/  
+        └── com/factoriaf5/kata/  
+            ├── CharacterTest.java  
+            └── PropTest.java  
