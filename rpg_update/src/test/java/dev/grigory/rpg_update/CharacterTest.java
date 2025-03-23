@@ -62,4 +62,15 @@ class CharacterTest {
         attacker.dealDamage(target, 100);
         assertEquals(950, target.getHealth());
     }
+    @Test
+    void damageIsIncreasedBy50PercentWhenTargetIsFiveOrMoreLevelsBelow() {
+        Character attacker = new Character();
+        Character target = new Character();
+        for (int i = 0; i < 5; i++) {
+        attacker.levelUp();
+        }
+
+        attacker.dealDamage(target, 100);
+        assertEquals(850, target.getHealth());
+    }
 }
