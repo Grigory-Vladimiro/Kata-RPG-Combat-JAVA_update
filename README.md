@@ -64,17 +64,17 @@ Tests are located in:
 src/
 ├── main/
 │   └── java/
-│       └── com/
-│           └── factoriaf5/
-│               └── kata/
+│       └── dev/
+│           └── grigory/
+│               └── rpg_update/
 │                   ├── Character.java
 │                   ├── Faction.java
 │                   └── Prop.java
 └── test/
     └── java/
-        └── com/
-            └── factoriaf5/
-                └── kata/
+        └── dev/
+            └── grigory/
+                └── rpg_update/
                     ├── CharacterTest.java
                     └── PropTest.java
 ```
